@@ -1,0 +1,25 @@
+<%- include("header") %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center">Edit Course</h1>
+    <form action="/editCourseSubmit" method="post">
+        <table align="center" class="table table-bordered">
+            <tr>
+                <td>Title</td>
+                <td><input type="text" name="title" value="<%= course.title %>" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><textarea name="description" class="form-control" rows="4" required><%= course.description %></textarea></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><input type="text" name="category" value="<%= course.category %>" class="form-control" required /></td>
+            </tr>
+            <input type="hidden" name="courseId" value="<%= course._id %>" />
+            <tr>
+                <td colspan="2" align="center"><input type="submit" class="btn btn-primary" value="Update" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

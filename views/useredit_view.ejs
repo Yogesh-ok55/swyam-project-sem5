@@ -1,0 +1,49 @@
+<%- include("header") %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center">Edit User</h1>
+    <form action="/EditUserSubmit" method="post">
+        <table align="center" class="table table-bordered">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" value="<%= user.name %>" required /></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email" value="<%= user.email %>" required /></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" value="<%= user.password %>" required /></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <select name="gender" required>
+                        <option value="Male" <%= user.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                        <option value="Female" <%= user.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                        <option value="Other" <%= user.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td>
+                    <select name="role" required>
+                        <option value="Student" <%= user.user_type === 'Student' ? 'selected' : '' %>>Student</option>
+                        <option value="Teacher" <%= user.user_type === 'Teacher' ? 'selected' : '' %>>Teacher</option>
+                        <option value="Parent" <%= user.user_type === 'Parent' ? 'selected' : '' %>>Parent</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Enrolled Courses</td>
+                <td><input type="number" name="enrolled_courses" value="<%= user.enrolled_courses %>" required /></td>
+            </tr>
+            <input type="hidden" name="userId" value="<%= user._id %>" />
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Update" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

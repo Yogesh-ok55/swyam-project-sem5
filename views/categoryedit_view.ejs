@@ -1,0 +1,25 @@
+<%- include("header"); %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center">Edit Category</h1>
+    <form action="/EditCategorySubmit" method="post">
+        <table align="center" class="table table-bordered">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" class="form-control" value="<%= category.name %>" required /></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name="description" class="form-control" value="<%= category.description %>" required /></td>
+            </tr>
+            <!-- Hidden input to store the category ID -->
+            <input type="hidden" name="catId" value="<%= category._id %>" />
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" class="btn btn-primary" value="Update" />
+                    <a href="/" class="btn btn-secondary ml-2">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

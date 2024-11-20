@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            padding: 15px;
+            background: linear-gradient(90deg, #A1C4FD, #ffffff);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-nav {
+            margin: 0 auto; 
+        }
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+        .navbar-nav .nav-link {
+            padding: 10px 20px;
+            color: #555;
+            transition: color 0.3s, background-color 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: #A1C4FD;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .dropdown-menu {
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        .content-container {
+            margin-top: 30px;
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center my-4">
+            <h1>eduMe</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Users
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="usersDropdown">
+                                <li><a class="dropdown-item" href="/adduser">Add User</a></li>
+                                <li><a class="dropdown-item" href="/listuser">List Users</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Category
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                <li><a class="dropdown-item" href="/addcategory">Add Category</a></li>
+                                <li><a class="dropdown-item" href="/listcategory">List Category</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="lessonDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Lessons
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="lessonDropdown">
+                                <li><a class="dropdown-item" href="/addLesson">Add Lesson</a></li>
+                                <li><a class="dropdown-item" href="/listLesson">List Lesson</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Notifications
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
+                                <li><a class="dropdown-item" href="/addNotification">Add Notification</a></li>
+                                <li><a class="dropdown-item" href="/listNotification">List Notification</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Courses
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+                                <li><a class="dropdown-item" href="/addCourse">Add Courses</a></li>
+                                <li><a class="dropdown-item" href="/listCourse">List Courses</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Dashboard message container -->
+        <div id="dashboardMessage" class="container content-container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Welcome to the Dashboard</h1>
+                    <p>Select an option from the navigation bar to manage your content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script>
+        // JavaScript to hide the "Welcome to the Dashboard" message when not on the home page
+        document.addEventListener("DOMContentLoaded", function() {
+            var path = window.location.pathname; // Get the current path
+
+            // Check if the current path is not the home page
+            if (path !== "/") {
+                document.getElementById("dashboardMessage").style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

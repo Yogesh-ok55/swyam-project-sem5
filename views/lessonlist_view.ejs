@@ -1,0 +1,47 @@
+<%- include("header"); %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center" >List of Lessons</h1>
+
+    <% if (lessonData.length > 0) { %>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Order</th>
+                    <th>Quiz Question</th>
+                    <th>Quiz Options</th>
+                    <th>Correct Answer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% lessonData.forEach(function(lesson) { %>
+                    <tr>
+                        <td><%= lesson.title %></td>
+                        <td><%= lesson.content %></td>
+                        <td><%= lesson.order %></td>
+                        <td><%= lesson.quiz && lesson.quiz.questions[0] ? lesson.quiz.questions[0].question : 'N/A' %></td>
+                        <td>
+                            <% if (lesson.quiz && lesson.quiz.questions[0] && lesson.quiz.questions[0].options) { %>
+                                <% lesson.quiz.questions[0].options.forEach(function(option) { %>
+                                    <%= option %><br>
+                                <% }); %>
+                            <% } else { %>
+                                N/A
+                            <% } %>
+                        </td>
+                        <td><%= lesson.quiz && lesson.quiz.questions[0] ? lesson.quiz.questions[0].answer : 'N/A' %></td>
+                        <td>
+                            <a href="/editLesson?lessonId=<%= lesson._id %>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/deleteLesson?lessonId=<%= lesson._id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this lesson?');">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No lessons found.</p>
+    <% } %>
+</div>

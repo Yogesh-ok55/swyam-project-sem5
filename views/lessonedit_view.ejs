@@ -1,0 +1,36 @@
+<%- include("header") %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center">Edit Lesson</h1>
+    <form action="/editLessonSubmit" method="post">
+        <table align="center" class="table table-bordered">
+            <tr>
+                <td>Title</td>
+                <td><input type="text" name="title" class="form-control" value="<%= lesson.title %>" required /></td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td><textarea name="content" class="form-control" rows="5" required><%= lesson.content %></textarea></td>
+            </tr>
+            <tr>
+                <td>Order</td>
+                <td><input type="number" name="order" class="form-control" min="1" value="<%= lesson.order %>" required /></td>
+            </tr>
+            <tr>
+                <td>Quiz Question</td>
+                <td><input type="text" name="question" class="form-control" value="<%= lesson.quiz.questions[0] ? lesson.quiz.questions[0].question : '' %>" required /></td>
+            </tr>
+            <tr>
+                <td>Quiz Answer</td>
+                <td><input type="text" name="answer" class="form-control" value="<%= lesson.quiz.questions[0] ? lesson.quiz.questions[0].answer : '' %>" required /></td>
+            </tr>
+            <input type="hidden" name="lessonId" value="<%= lesson._id %>" />
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" class="btn btn-primary" value="Update" />
+                    <a href="/listLesson" class="btn btn-secondary ml-2">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

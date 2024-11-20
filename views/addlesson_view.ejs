@@ -1,0 +1,32 @@
+<%- include("header"); %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center">Add Lesson</h1>
+    <form action="/addLessonSubmit" method="post">
+        <table align="center" class="table table-bordered">
+            <tr>
+                <td>Title</td>
+                <td><input type="text" name="title" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td><textarea name="content" class="form-control" rows="5" required></textarea></td>
+            </tr>
+            <tr>
+                <td>Order</td>
+                <td><input type="number" name="order" class="form-control" min="1" required /></td>
+            </tr>
+            <tr>
+                <td>Quiz Question</td>
+                <td><input type="text" name="question" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td>Quiz Answer</td>
+                <td><input type="text" name="answer" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

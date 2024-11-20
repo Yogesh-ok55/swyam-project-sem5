@@ -1,0 +1,33 @@
+<%- include("header") %>
+
+<div style="border: 2px solid blue; height: auto; width: 1000px; margin: 20px auto; padding: 20px;">
+    <h1 class="bg-primary text-light text-center">Add Notification</h1>
+    <form action="/addNotificationSubmit" method="post">
+        <table align="center" class="table table-bordered">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td>Message</td>
+                <td><textarea name="message" class="form-control" rows="4" required></textarea></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="datetime-local" name="date" class="form-control" required /></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    <select name="status" class="form-control" required>
+                        <option value="unread">Unread</option>
+                        <option value="read">Read</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" class="btn btn-primary" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
